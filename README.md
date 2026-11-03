@@ -1,103 +1,318 @@
 # LayoffLens AI
 
-## Enterprise Workforce Resilience Intelligence Platform
+### Enterprise Workforce Resilience Intelligence Platform
 
 **See the risks. Find the alternatives. Protect the workforce.**
 
-LayoffLens AI is an independent Meta hackathon prototype for aggregate workforce and business planning. It turns synthetic finance, project, capacity, hiring, AI-investment, and infrastructure signals into a coordinated bounded workflow. Six deterministic specialists analyze the signals, compare reversible planning options, and produce an evidence-grounded brief. It is not an autonomous LLM-agent system, employee scoring tool, or employment decision system.
+LayoffLens AI is an AI-powered enterprise decision-support platform designed to help organizations identify business and operational risks early, investigate their causes, forecast potential impacts, and evaluate alternatives before considering workforce reductions.
 
-> **DEMO DATA — SYNTHETIC.** This does not score named employees, recommend terminations, or connect to HR/payroll systems.
+It brings together financial, sales, project, workforce capacity, hiring, AI investment and infrastructure signals into a coordinated investigation and scenario-planning workflow.
 
-## Run locally
+Rather than automatically recommending layoffs, LayoffLens AI helps decision-makers understand business conditions, explore preventive alternatives, review supporting evidence and retain human control over decisions.
+
+> **Demo environment:** The included dataset is synthetic and aggregate-only. No individual employee termination scoring, automated employment decisions or live HR/payroll integrations are performed.
+
+---
+
+## Key Features
+
+- **Enterprise Intelligence:** Analyze financial performance, sales pipeline, project delivery, workforce capacity and infrastructure signals.
+- **Risk Detection:** Identify business anomalies, operational risks and emerging capacity mismatches.
+- **Multi-Agent Investigation:** Coordinate bounded specialist workflows to investigate selected business events.
+- **Meta AI Integration:** Optional Meta Model API integration for structured supervisor and specialist reasoning.
+- **Business Forecasting:** Generate deterministic projections and compare business outlooks.
+- **Scenario Planning:** Compare baseline, downside and preventive intervention scenarios.
+- **Alternative Evaluation:** Explore reskilling, redeployment, contractor optimization, spending reviews and other illustrative preventive options.
+- **Evidence-Based Reviews:** Maintain investigation evidence, reviewer comments, decisions and audit history.
+- **Research Integration:** Optionally retrieve relevant public information through Tavily.
+
+## How It Works
+
+1. **Collect:** Load and validate enterprise demonstration data.
+2. **Detect:** Identify signals, anomalies and potential business risks.
+3. **Investigate:** Execute a bounded investigation using relevant specialist agents.
+4. **Forecast:** Evaluate potential financial and operational outcomes.
+5. **Simulate:** Compare baseline, downside and preventive alternatives.
+6. **Review:** Present evidence and findings for human assessment.
+7. **Record:** Preserve investigation and review history locally.
+
+## Technology Stack
+
+| Layer | Technologies |
+|---|---|
+| Backend | Python, FastAPI |
+| Frontend | HTML, CSS, JavaScript |
+| Analytics | Pandas, NumPy, deterministic forecasting |
+| AI integration | Meta Model API |
+| Agent orchestration | Bounded supervisor and specialist runtime |
+| External research | Optional Tavily API |
+| Persistence | SQLite |
+| Testing | Pytest |
+
+---
+
+## Project Structure
+
+```text
+LayoffLens-AI/
+│
+├── backend/
+│   ├── app/
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── index.html
+│   ├── app.js
+│   └── styles.css
+│
+├── data/
+├── tests/
+│   └── fixtures/
+│
+├── scripts/
+├── docs/
+│
+├── .env.example
+├── .gitignore
+├── LICENSE
+└── README.md
+```
+
+---
+
+# Installation and Setup
+
+## 1. Prerequisites
+
+Install the following before running the application:
+
+- Python 3.10 or later (use the Python version supported by the project dependencies).
+- pip.
+- Git.
+- A modern web browser.
+
+## 2. Clone the repository
+
+Open Windows PowerShell:
 
 ```powershell
-cd D:\CMB_Desktop\LayoffLens_AI
-& C:\Users\MAHESH\anaconda3\python.exe -m pip install -r backend\requirements.txt
-& C:\Users\MAHESH\anaconda3\python.exe -m uvicorn backend.app.main:app --reload
+git clone YOUR_GITHUB_REPOSITORY_URL
+cd LayoffLens-AI
 ```
 
-Open http://127.0.0.1:8000. The app creates a local `wri_demo.sqlite3` file for investigation and simulated review history; set `WRI_DATABASE_PATH` to use another file. Run tests with `& C:\Users\MAHESH\anaconda3\python.exe -m pytest -q`. No API key or paid service is required for the demo.
+Replace `YOUR_GITHUB_REPOSITORY_URL` with your actual public GitHub repository URL.
 
-## Meta model mode
-
-The default `META_MODEL_MODE=demo` is deterministic and visibly labeled **Demo fallback**. The demo makes no outbound Meta request. An optional live path exists behind `META_MODEL_MODE=live` and `MODEL_API_KEY`; live inference remains unverified for this submission and was not called because no authorized credential or credit approval was available. The key is server-side only. The live gateway uses the documented Meta Model API Responses endpoint, strict JSON schema output, and configurable model ID. Missing credentials, malformed output, unavailable service, timeouts, and rate limits produce a clearly labeled deterministic fallback. See [docs/meta-api-integration.md](docs/meta-api-integration.md) for official references and pricing/limit notes.
-
-## End-to-end demo
-
-Synthetic signals are validated into a reproducible versioned local snapshot, classified into a bounded event-dependent investigation path, analyzed by deterministic specialists, compared across baseline/downside/intervention scenarios, evaluated against mutually exclusive alternatives with explicit formulas and sensitivity bounds, converted into illustrative preventive options, summarized in demo fallback mode, and recorded with a simulated human review in SQLite. Evidence review is mandatory for a `complete` run; budget exhaustion is reported as `incomplete`, and failed or unsupported checks are `degraded`. Local event replay is available at `/api/events/replay`, prior runs at `/api/history`, and explicitly supplied outcome observations at `/api/outcomes`; descriptive projection comparisons are available at `/api/outcomes/compare/{investigation_id}`. Action costs are synthetic assumptions, not validated savings, and alternatives must not be added together. The adaptive workflow is documented in [docs/investigation-workflow.md](docs/investigation-workflow.md); the judge walkthrough is in [docs/demo-runbook.md](docs/demo-runbook.md) and the concise narrative is in [docs/demo-script.md](docs/demo-script.md).
-
-Optional local monitoring is available only when explicitly enabled with
-`WRI_MONITOR_ENABLED=true`. It polls one JSON snapshot, persists a content
-fingerprint, suppresses unchanged content, and invokes the existing bounded
-investigation only after a changed valid snapshot. It is local file polling,
-not an enterprise connector or real-time monitoring system. See
-[PHASE6I_IMPLEMENTATION_REPORT.md](PHASE6I_IMPLEMENTATION_REPORT.md).
-
-## Connected multi-agent runtime
-
-The investigation API now executes through a registered agent runtime rather
-than a disconnected demonstration. The event-specific supervisor plan selects
-the bounded specialists, validates tool permissions and dependencies, invokes
-the existing deterministic calculation tools, and persists an execution trace.
-Inspect the runtime with `GET /api/agents`, `GET /api/tools`, and
-`GET /api/investigations/{run_id}/trace`. The frontend displays the actual
-selected-agent trace.
-
-The verified local mode is **deterministic simulation**: agent identities,
-prompts, contracts, routing metadata, handoffs, and tool execution are real
-application architecture, but no live model reasoning or external research is
-claimed. See [docs/AGENT_ARCHITECTURE_TRANSFORMATION.md](docs/AGENT_ARCHITECTURE_TRANSFORMATION.md)
-and [docs/AGENT_EXECUTION_FLOW.md](docs/AGENT_EXECUTION_FLOW.md).
-The implementation details and verification are recorded in
-[AGENT_RUNTIME_IMPLEMENTATION_REPORT.md](AGENT_RUNTIME_IMPLEMENTATION_REPORT.md).
-Set `WRI_AGENT_MODE=live` only with an authorized `MODEL_API_KEY` to enable
-structured supervisor and specialist model calls; this path is implemented and
-mock-tested but not live-verified.
-
-## Durable orchestration and evaluation
-
-Investigation work is recorded in SQLite work items with queued, running,
-completed, degraded, incomplete, and failed states. Source event IDs are
-idempotent for normal intake, specialist results remain inspectable through
-`/api/history`, and work timelines are available at `/api/work` and
-`/api/work/{work_id}/timeline`. Explicit replay remains a distinct historical
-run. This is a single-process local work record, not a distributed queue.
-
-Persisted observations can be evaluated through `POST /api/evaluations` and
-`GET /api/evaluations`. The temporal backtest requires comparable numeric
-measures, excludes prediction leakage and invalid units with reasons, compares
-the deterministic projection with a last-observation baseline when enough
-history exists, and never promotes a policy automatically.
-
-An optional local security mode can be enabled with
-`WRI_AUTH_ENABLED=true`. It provides documented demo bearer tokens, reviewer
-read access, operator/admin write access, a `demo-tenant` boundary, security
-headers, and application-level SQLite audit events:
+## 3. Create a virtual environment
 
 ```powershell
-$env:WRI_AUTH_ENABLED="true"
-# Demo users: reviewer/reviewer-demo, operator/operator-demo, admin/admin-demo
+python -m venv .venv
 ```
 
-Use `POST /api/auth/login` and send the returned bearer token plus
-`X-WRI-Tenant: demo-tenant`. This is a local reference control, not SSO,
-encryption-at-rest, immutable audit, or production security.
+Activate it:
 
-## Architecture
-
-```mermaid
-flowchart LR
-  S[synthetic source adapters] --> V[validation + lineage]
-  V --> N[deterministic numeric engine]
-  N --> A[bounded domain agents]
-  A --> G[MetaModelClient]
-  G --> B[evidence brief]
-  B --> H[human review + audit]
-  N --> E[evaluation]
+```powershell
+.\.venv\Scripts\Activate.ps1
 ```
 
-## Limitations
+If PowerShell blocks activation, run:
 
-This is a hackathon vertical slice, not a validated forecasting product. The data is synthetic, action costs are illustrative assumptions, the evaluation window is synthetic, and the live Meta path was not tested without credentials. A real deployment needs identity, source connectors, privacy review, backtesting, retention controls, and human governance.
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\.venv\Scripts\Activate.ps1
+```
 
-Production-planned capabilities include authorized enterprise connectors, SSO/RBAC, retention, tenant isolation, immutable audit, backtesting, drift monitoring, and deployment observability. See [IMPLEMENTATION_REPORT.md](IMPLEMENTATION_REPORT.md), [FINAL_SUBMISSION_READINESS.md](FINAL_SUBMISSION_READINESS.md), [docs/meta-api-integration.md](docs/meta-api-integration.md), and [docs/submission-checklist.md](docs/submission-checklist.md).
+## 4. Install dependencies
+
+```powershell
+python -m pip install --upgrade pip
+python -m pip install -r backend/requirements.txt
+```
+
+## 5. Configure environment variables
+
+Create a local `.env` file from the example:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Open `.env` and configure the required settings.
+
+### Environment configuration
+
+The application uses demo mode by default. No API key is required to run the deterministic demonstration.
+
+```env
+# Application modes
+META_MODEL_MODE=demo
+WRI_AGENT_MODE=simulation
+
+# Meta Model API
+MODEL_API_KEY=
+META_MODEL_ID=muse-spark-1.3
+META_MODEL_BASE_URL=https://api.meta.ai/v1
+
+# Optional specialist model overrides
+META_SUPERVISOR_MODEL=
+META_SIGNAL_MODEL=
+META_RESEARCH_MODEL=
+META_FINANCE_MODEL=
+META_DEMAND_MODEL=
+META_CAPACITY_MODEL=
+META_OPERATIONS_MODEL=
+META_SCENARIO_MODEL=
+META_ALTERNATIVES_MODEL=
+META_REVIEW_MODEL=
+META_REPORTING_MODEL=
+
+# Optional Tavily public research integration
+TAVILY_API_KEY=
+TAVILY_API_URL=https://api.tavily.com/search
+WRI_RESEARCH_TIMEOUT_SECONDS=15
+
+# Local database
+WRI_DATABASE_PATH=
+
+# Bounded agent execution
+WRI_AGENT_TIMEOUT_SECONDS=20
+WRI_AGENT_MAX_STEPS=12
+
+# Optional local authentication and monitoring
+WRI_AUTH_ENABLED=false
+WRI_MONITOR_ENABLED=false
+```
+
+### Understanding the configuration
+
+| Variable | Purpose |
+|---|---|
+| `META_MODEL_MODE` | Selects Meta demo or live model mode |
+| `WRI_AGENT_MODE` | Selects simulation or live agent execution |
+| `MODEL_API_KEY` | Server-side Meta API credential |
+| `META_MODEL_ID` | Meta model identifier |
+| `META_MODEL_BASE_URL` | Meta API base URL |
+| `TAVILY_API_KEY` | Optional public research API credential |
+| `WRI_DATABASE_PATH` | Optional local SQLite database location |
+| `WRI_AGENT_TIMEOUT_SECONDS` | Maximum agent execution timeout |
+| `WRI_AGENT_MAX_STEPS` | Maximum bounded investigation steps |
+
+**Important:**
+
+- Keep `META_MODEL_MODE=demo` and `WRI_AGENT_MODE=simulation` for the default demonstration.
+- Live Meta requests require an authorized API key and appropriate account access.
+- To enable live Meta integration, configure:
+
+```env
+META_MODEL_MODE=live
+WRI_AGENT_MODE=live
+MODEL_API_KEY=YOUR_META_API_KEY
+```
+
+- Tavily is optional and requires its own API key.
+- Never commit your actual `.env` file or API credentials to GitHub.
+- The Meta live integration was implemented and mock-tested but has not been live-verified in this submission.
+
+---
+
+# Running the Application
+
+From the repository root, with your virtual environment activated:
+
+```powershell
+python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --reload
+```
+
+Open the application:
+
+**Frontend:** http://127.0.0.1:8000/
+
+**FastAPI documentation:** http://127.0.0.1:8000/docs
+
+The application uses a local SQLite database for persisted investigation and review information. By default, the database is created locally. You can configure a different location using `WRI_DATABASE_PATH`.
+
+To stop the application, press `Ctrl + C` in PowerShell.
+
+---
+
+# Running Tests
+
+From the project root:
+
+```powershell
+python -m pytest -q
+```
+
+Additional validation:
+
+```powershell
+python -m compileall -q backend
+
+node --check frontend/app.js
+
+python scripts/check_submission.py
+```
+
+---
+
+# Meta AI Integration
+
+LayoffLens AI includes an optional Meta Model API integration.
+
+The integration is designed to support structured supervisor and specialist reasoning, while deterministic analytics remain responsible for numerical calculations and scenario results.
+
+The application supports:
+
+- Configurable Meta model selection.
+- Structured model outputs.
+- Bounded model execution.
+- Response validation.
+- Deterministic fallback when live inference is unavailable.
+
+The default demo configuration does not make outbound Meta API requests.
+
+Live Meta inference has not been verified in this submission. See `docs/meta-api-integration.md` for additional implementation details.
+
+# Data and Responsible Use
+
+The current demonstration uses synthetic, aggregate-only enterprise data.
+
+It does not:
+- Connect to actual company HR, payroll or ERP accounts.
+- Score named employees for termination.
+- Recommend individual layoffs.
+- Automatically make employment decisions.
+- Replace management, legal or human-resources review.
+
+Scenario costs and preventive savings are illustrative assumptions, not guaranteed financial outcomes.
+
+Public research is contextual information and is not treated as verified internal enterprise evidence.
+
+# Current Limitations
+
+LayoffLens AI is a hackathon implementation and decision-support foundation.
+
+Production deployment would require additional work, including:
+- Authorized enterprise data integrations.
+- Organization-specific identity and access management.
+- Production-grade tenant isolation and security.
+- Real-world forecast validation.
+- Data retention and privacy controls.
+- Production monitoring and deployment infrastructure.
+
+# Hackathon Project
+
+**Event:** Meta Global AI Developer Hackathon 2026
+
+**Problem statement:** Build for Your World
+
+**Project:** LayoffLens AI — Enterprise Workforce Resilience Intelligence Platform
+
+The project explores how Meta AI-powered reasoning, coordinated investigation workflows and explainable business analytics can help organizations identify risks earlier and evaluate alternatives before making workforce-related decisions.
+
+**Demo video:** Add your three-minute demo URL here.
+
+**Repository:** Add your public GitHub repository URL here.
+
+---
+
+**Built for a future where business resilience and workforce protection go hand in hand.**
