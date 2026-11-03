@@ -1,0 +1,10 @@
+[
+  {
+    "id": "finance:F-001",
+    "month": "Oct",
+    "revenue": 10.9,
+    "budget": 12.5,
+    "opex": 9.0,
+    "event_timestamp": "2026-10-31T00:00:00Z"
+  }
+]
