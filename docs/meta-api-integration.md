@@ -71,7 +71,3 @@ timeouts, rate limits, server errors, and explicit deterministic fallback.
 No live Meta request was made during Phase 6H because no authorized credential
 or explicit credit approval was available. Live inference remains unverified
 and must not be claimed in the submission.
-
-The authoritative consolidated Phase 6 status is in
-[PHASE6_FINAL_REPORT.md](../PHASE6_FINAL_REPORT.md). The safe readiness endpoint
-is `GET /api/providers/status`; it never returns the API key.

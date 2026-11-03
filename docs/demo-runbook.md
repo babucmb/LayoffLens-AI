@@ -31,10 +31,8 @@ Open `http://127.0.0.1:8011/`.
    mutually exclusive and must not be added together.
 6. Click **Run investigation**. Inspect the source snapshot, policy version,
    specialist order, consumed inputs, evidence review, and final status.
-7. Open **Human review**, inspect the run evidence, create a linked review with
-   a meaningful rationale, add a comment or evidence request, and inspect its
-   activity timeline. Review identity is simulated unless local authentication
-   is enabled.
+7. Open **Human review**, inspect the run history, and record an explicitly
+   supplied outcome with a date, value, and evidence note.
 8. Compare the observation descriptively:
 
    ```powershell
@@ -81,8 +79,6 @@ The first valid check reports `baseline`; the next unchanged check reports
 - A complete investigation includes the final evidence-review step.
 - Replay uses the same snapshot but creates a new run ID.
 - Outcome comparison is descriptive and explicitly makes no causal claim.
-- Audit history is visible only to authorized operator/admin demo roles when
-  authentication is enabled; SQLite audit storage is not tamper-proof.
 
 ## Troubleshooting
 

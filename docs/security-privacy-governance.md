@@ -1,14 +1,12 @@
 # Security, privacy, and governance
 
-The product is aggregate-only by design. Secrets stay server-side; `.env` is ignored; the model prompt treats supplied content as untrusted data; and no arbitrary tools are exposed. Live model output must cite supplied evidence and is shown with a live/demo indicator. Reviews are advisory and cannot trigger HR, payroll, hiring, or termination actions.
+The product is aggregate-only by design. Secrets stay server-side; `.env` is ignored; the model prompt treats supplied content as untrusted data; and no arbitrary tools are exposed. Live model output must cite supplied evidence and is shown with a live/demo indicator. Reviews are simulated and cannot trigger HR, payroll, hiring, or termination actions.
 
 ## Verified local reference controls
 
 When `WRI_AUTH_ENABLED=true`, the API enforces server-side bearer tokens from
 the local demo configuration, reviewer versus operator/admin write roles, and
-the `demo-tenant` request boundary. Linked reviews preserve review-time evidence
-snapshots and lifecycle activity. Audit history is restricted to operator/admin
-roles and tenant-filtered. Login, investigation, replay, review,
+the `demo-tenant` request boundary. Login, investigation, replay, review,
 outcome, evaluation, and monitor actions create application-level SQLite audit
 events. Security response headers are added by the API middleware. Invalid
 credentials and tenant mismatches are rejected before route execution.

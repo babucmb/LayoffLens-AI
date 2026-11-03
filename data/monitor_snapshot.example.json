@@ -1,0 +1,32 @@
+{
+  "source_id": "local-monitor-fixture",
+  "source_version": "monitor-fixture-v1",
+  "event_type": "project_delay",
+  "source_timestamp": "2026-10-29T00:00:00Z",
+  "data": {
+    "company": "Northstar Systems",
+    "period": "October 2026",
+    "finance": [
+      {"id": "finance:2026-08", "month": "Aug", "revenue": 12.4, "budget": 12.0, "opex": 8.1},
+      {"id": "finance:2026-09", "month": "Sep", "revenue": 11.8, "budget": 12.2, "opex": 8.4},
+      {"id": "finance:2026-10", "month": "Oct", "revenue": 10.9, "budget": 12.5, "opex": 9.0}
+    ],
+    "projects": [
+      {"id": "project:P-104", "name": "Atlas migration", "unit": "Cloud Platforms", "status": "delayed", "signed": 5.2, "weighted": 2.6, "skill": "Cloud", "delay_months": 2},
+      {"id": "project:P-118", "name": "Care analytics", "unit": "Data Products", "status": "at risk", "signed": 3.8, "weighted": 2.1, "skill": "Data", "delay_months": 1},
+      {"id": "project:P-121", "name": "Retail launch", "unit": "Digital", "status": "on track", "signed": 4.5, "weighted": 3.9, "skill": "Product", "delay_months": 0},
+      {"id": "project:P-129", "name": "Internal automation", "unit": "Operations", "status": "on track", "signed": 2.4, "weighted": 1.8, "skill": "Engineering", "delay_months": 0}
+    ],
+    "capacity": [
+      {"skill": "Cloud", "capacity": 38, "demand": 45, "unit": "Cloud Platforms"},
+      {"skill": "Data", "capacity": 42, "demand": 46, "unit": "Data Products"},
+      {"skill": "Product", "capacity": 31, "demand": 29, "unit": "Digital"},
+      {"skill": "Engineering", "capacity": 55, "demand": 51, "unit": "Operations"}
+    ],
+    "hiring": [
+      {"id": "hire:H-07", "skill": "Cloud", "seats": 6, "join_month": "Nov", "status": "approved"},
+      {"id": "hire:H-12", "skill": "Data", "seats": 4, "join_month": "Dec", "status": "approved"}
+    ],
+    "investment": {"ai_spend": 1.4, "gpu_spend": 0.9, "adoption": 0.42, "quality": 0.88, "productivity_signal": 0.11}
+  }
+}
