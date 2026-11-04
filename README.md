@@ -1,4 +1,4 @@
-# LayoffLens AI
+# LayoffLens AI [Open Live Application](https://tkdv9dm8-8011.inc1.devtunnels.ms/)
 ### Enterprise Workforce Resilience Intelligence Platform
 
 **See the risks. Understand the causes. Explore alternatives. Protect the workforce.**
