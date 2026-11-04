@@ -1,4 +1,5 @@
 # LayoffLens AI [Open Live Application](https://tkdv9dm8-8011.inc1.devtunnels.ms/)
+> Note: This is a temporary VS Code Dev Tunnel. The application must be running and the tunnel must remain active.
 ### Enterprise Workforce Resilience Intelligence Platform
 
 **See the risks. Understand the causes. Explore alternatives. Protect the workforce.**
